@@ -1,127 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Programmer Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Portfolio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#07111f;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Navbar */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    z-index:1000;
+    transition:.3s;
+}
+
+nav.scrolled{
+    background:rgba(0,119,255,0.15);
+    backdrop-filter:blur(15px);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#4da6ff;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#4da6ff;
+}
+
+/* Hero */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 10%;
+    background:
+    radial-gradient(circle at top right,#0a4cff55,transparent 40%),
+    radial-gradient(circle at bottom left,#00aeff33,transparent 40%);
+}
+
+.hero-content h1{
+    font-size:4rem;
+    margin-bottom:15px;
+}
+
+.hero-content span{
+    color:#4da6ff;
+}
+
+.hero-content p{
+    max-width:700px;
+    margin:auto;
+    color:#cfcfcf;
+    line-height:1.7;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 30px;
+    border-radius:50px;
+    background:#0077ff;
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    background:#3395ff;
+}
+
+/* Sections */
+section{
+    padding:100px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:50px;
+    color:#4da6ff;
+}
+
+/* About */
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.about-card{
+    background:rgba(255,255,255,0.05);
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+}
+
+/* Skills */
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.skill{
+    background:rgba(255,255,255,0.05);
+    padding:25px;
+    text-align:center;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.skill:hover{
+    transform:translateY(-8px);
+    background:rgba(0,119,255,0.2);
+}
+
+/* Projects */
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.project{
+    background:rgba(255,255,255,0.05);
+    border-radius:20px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.project:hover{
+    transform:translateY(-10px);
+}
+
+.project img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.project-content{
+    padding:20px;
+}
+
+/* Contact */
+.contact{
+    text-align:center;
+}
+
+.contact-form{
+    max-width:600px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:rgba(255,255,255,0.08);
+    color:white;
+}
+
+.contact-form button{
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#0077ff;
+    color:white;
+    cursor:pointer;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:25px;
+    background:#050d18;
+    color:#aaa;
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+    .hero-content h1{
+        font-size:2.8rem;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    nav ul{
+        gap:15px;
+    }
+}
+</style>
 </head>
 <body>
 
-    <div class="cursor"></div>
+<nav id="navbar">
+    <div class="logo">Portfolio</div>
 
-    <header>
-        <nav>
-            <h2 class="logo">Dash<span>Code</span></h2>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Hello, I'm <span>John Doe</span></h1>
+        <p>
+            Full Stack Developer creating modern web experiences,
+            scalable applications, and beautiful user interfaces.
+        </p>
 
-            <a href="#contact" class="btn">Hire Me</a>
-        </nav>
-    </header>
+        <a href="#projects" class="btn">View Projects</a>
+    </div>
+</section>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h3>Hello, I'm</h3>
-            <h1>John Developer</h1>
-            <h2><span id="typing"></span></h2>
+<section id="about">
+    <h2 class="section-title">About Me</h2>
 
+    <div class="about">
+        <div class="about-card">
+            <h3>Who I Am</h3>
             <p>
-                I build modern websites, web applications,
-                and digital experiences that help businesses grow.
+                I'm a passionate developer specializing in web and
+                mobile technologies. I love building products that
+                solve real-world problems.
             </p>
-
-            <div class="hero-buttons">
-                <a href="#" class="btn">Download CV</a>
-                <a href="#projects" class="btn secondary">Projects</a>
-            </div>
-
-            <div class="socials">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
         </div>
 
-        <div class="hero-image">
-            <div class="glow"></div>
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600"
-                alt="Programmer">
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <h2>About Me</h2>
-
-        <div class="about-box">
+        <div class="about-card">
+            <h3>Experience</h3>
             <p>
-                Passionate programmer focused on creating
-                beautiful, fast and responsive web experiences.
-                I enjoy turning ideas into real products using
+                5+ years of experience building websites,
+                SaaS products, and mobile applications using
                 modern technologies.
             </p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="skills" id="skills">
-        <h2>Skills</h2>
+<section id="skills">
+    <h2 class="section-title">Skills</h2>
 
-        <div class="skills-grid">
-            <div class="card">HTML5</div>
-            <div class="card">CSS3</div>
-            <div class="card">JavaScript</div>
-            <div class="card">React</div>
-            <div class="card">Node.js</div>
-            <div class="card">GitHub</div>
+    <div class="skills-grid">
+        <div class="skill">HTML5</div>
+        <div class="skill">CSS3</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">React</div>
+        <div class="skill">Node.js</div>
+        <div class="skill">Firebase</div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-grid">
+
+        <div class="project">
+            <img src="https://picsum.photos/500/300?1">
+            <div class="project-content">
+                <h3>Project One</h3>
+                <p>Modern SaaS dashboard application.</p>
+            </div>
         </div>
-    </section>
 
-    <section class="projects" id="projects">
-        <h2>Projects</h2>
-
-        <div class="project-grid">
-
-            <div class="project-card">
-                <h3>E-Commerce App</h3>
-                <p>Modern online store with payments.</p>
+        <div class="project">
+            <img src="https://picsum.photos/500/300?2">
+            <div class="project-content">
+                <h3>Project Two</h3>
+                <p>E-commerce platform with payments.</p>
             </div>
-
-            <div class="project-card">
-                <h3>Portfolio Website</h3>
-                <p>Responsive developer portfolio.</p>
-            </div>
-
-            <div class="project-card">
-                <h3>Task Manager</h3>
-                <p>Manage tasks efficiently.</p>
-            </div>
-
         </div>
-    </section>
 
-    <section class="contact" id="contact">
-        <h2>Let's Work Together</h2>
+        <div class="project">
+            <img src="https://picsum.photos/500/300?3">
+            <div class="project-content">
+                <h3>Project Three</h3>
+                <p>Mobile-first business solution.</p>
+            </div>
+        </div>
 
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message"></textarea>
-            <button type="submit" class="btn">Send Message</button>
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+
+    <div class="contact">
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Email">
+            <textarea rows="5" placeholder="Message"></textarea>
+            <button type="submit">Send Message</button>
         </form>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        <p>© 2026 John Developer. All Rights Reserved.</p>
-    </footer>
+<footer>
+    © 2026 John Doe. All Rights Reserved.
+</footer>
 
-    <script src="script.js"></script>
+<script>
+// Navbar Effect
+window.addEventListener("scroll", () => {
+    const nav = document.getElementById("navbar");
+
+    if(window.scrollY > 50){
+        nav.classList.add("scrolled");
+    } else {
+        nav.classList.remove("scrolled");
+    }
+});
+
+// Contact Form
+document.querySelector(".contact-form")
+.addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("Message Sent Successfully!");
+});
+</script>
 
 </body>
 </html>
